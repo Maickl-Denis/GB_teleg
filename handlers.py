@@ -32,64 +32,90 @@ def OS_but(call):
     global calc_result
     if call.data == 'g_go':
         logining(call, "Вход в Игры")
-        game.gam_start(call)
+        # game.gam_start(call)
         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
     if call.data == 'calc':
         logining(call, "Калькулятор")
         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=keyboards.inline_menu_calc)
     if call.data == '1':
-        bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
         calc_result +='1'
+        logining(call, call.data)
+        bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
     if call.data == '2':
         calc_result +='2'
+        logining(call, call.data)
         bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
     if call.data == '3':
         calc_result +='3'
+        logining(call, call.data)
         bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
     if call.data == '4':
         calc_result +='4'
+        logining(call, call.data)
         bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
     if call.data == '5':
         calc_result +='5'
+        logining(call, call.data)
         bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
     if call.data == '6':
         calc_result +='6'
+        logining(call, call.data)
         bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
     if call.data == '7':
         calc_result +='7'
+        logining(call, call.data)
         bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
     if call.data == '8':
         calc_result +='8'
+        logining(call, call.data)
         bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
     if call.data == '9':
         calc_result +='9'
+        logining(call, call.data)
         bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
     if call.data == '0':
         calc_result +='0'
+        logining(call, call.data)
         bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
     if call.data == '+':
         calc_result += '+'
+        logining(call, call.data)
         bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
     if call.data == '-':
         calc_result += '-'
+        logining(call, call.data)
         bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
     if call.data == '*':
         calc_result += '*'
+        logining(call, call.data)
         bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
     if call.data == '/':
         calc_result += '/'
+        logining(call, call.data)
         bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
     if call.data == '(':
         calc_result += '('
+        logining(call, call.data)
         bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
     if call.data == ')':
         calc_result += ')'
+        logining(call, call.data)
+        bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
+    if call.data == '.':
+        calc_result += '.'
+        logining(call, call.data)
         bot.answer_callback_query(call.id, show_alert=False, text=calc_result)
     if call.data == '=':
         try:
             bot.send_message(call.message.chat.id, text=f"{calc_result} = {eval(calc_result)}")
+            bot.answer_callback_query(call.id, '')
+            logining(call, call.data)
+            bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
         except:
             bot.send_message(call.message.chat.id, text=f"{calc_result} = это посчитать невозможно")
+            bot.answer_callback_query(call.id, '')
+            logining(call, call.data)
+            bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id)
         calc_result = ''
 
 
